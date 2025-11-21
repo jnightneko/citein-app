@@ -1,7 +1,9 @@
 package org.citein.app.system;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 import lombok.RequiredArgsConstructor;
+import org.citein.app.seeder.ActividadSeeder;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
@@ -9,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.*;
 @EnableWebMvc
 @RequiredArgsConstructor
 public class WebSecurityConfig implements WebMvcConfigurer {
-    
+    private static final Logger LOGGER = Logger.getLogger(ActividadSeeder.class.getName());
     private final CORSHost corsHost;
         
     @Override
@@ -25,7 +27,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowedOrigins(hosts);
         
-        System.out.println("Hosts: " + Arrays.toString(hosts));
-        System.out.println("Methods: " + Arrays.toString(methods));
+        LOGGER.info(() -> "Hosts: " + Arrays.toString(hosts));
+        LOGGER.info(() ->"Methods: " + Arrays.toString(methods));
     }
 }

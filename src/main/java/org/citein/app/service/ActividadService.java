@@ -38,7 +38,7 @@ public class ActividadService {
     
     public ActividadDto update(ActividadDto data, Long id) {
         Actividad model = repository.findById(id).orElseThrow();
-        model.setFavorito(Boolean.FALSE);
+        model.setFavorito(data.favorito());
         model.setNombre(data.nombre());        
         return ActividadDto.valueOf(
                 repository.save(model)
